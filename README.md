@@ -3,7 +3,7 @@
         <h1>SimpleDTO</h1>
         Simple Data Transfer Objects with FormRequest Validation for Laravel applications.
     </p>
-    <p>This library is based on https://github.com/WendellAdriel/laravel-validated-dto</p>
+    <p>This library was based on https://github.com/WendellAdriel/laravel-validated-dto .</p>
 </div>
 
 <p align="center">

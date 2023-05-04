@@ -1,6 +1,6 @@
 {
     "name": "tsarturi/simpledto",
-    "description": "Data Transfer Objects for Laravel applications",
+    "description": "Simple Data Transfer Objects with FormRequest Validation for Laravel applications",
     "type": "library",
     "license": "MIT",
     "autoload": {

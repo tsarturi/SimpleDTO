@@ -17,7 +17,7 @@
     <a href="#installation">Installation</a> |
     <a href="#configuration">Configuration</a> |
     <a href="#generating-dtos">Generating DTOs</a> |
-    <a href="#generating-formrequest">Generating FormRequest</a> |
+    <a href="#generating-formrequest">Generating FormRequest</a>
 </p>
 
 

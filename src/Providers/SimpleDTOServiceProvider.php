@@ -4,6 +4,7 @@ namespace Tsarturi\SimpleDTO\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Tsarturi\SimpleDTO\Console\Commands\MakeDTOCommand;
+use Tsarturi\SimpleDTO\Console\Commands\MakeSimpleDTOFormRequestCommand;
 
 class SimpleDTOServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class SimpleDTOServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands(MakeDTOCommand::class);
+            $this->commands(MakeSimpleDTOFormRequestCommand::class);
         }
 
         $this->publishes(

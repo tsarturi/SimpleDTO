@@ -4,7 +4,6 @@ namespace Tsarturi\SimpleDTO;
 use Illuminate\Http\Request;
 use PHPUnit\Util\InvalidJsonException;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
 use Tsarturi\SimpleDto\Castings\Castable;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
@@ -108,7 +107,7 @@ abstract class DTO
 
     protected function processFormRequest(string $formRequestClass, array $data) : void
     {
-        $this->formRequest = $formRequestClass::runFormRequest($data);
+        $this->formRequest = $formRequestClass::getSimpleDTOFormRequest($data);
         $this->dataValidated = $this->formRequest->all();
         $this->rules = $this->formRequest->rules();
 

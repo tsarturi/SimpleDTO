@@ -1,0 +1,25 @@
+{
+    "name": "tsarturi/simpledto",
+    "description": "Data Transfer Objects for Laravel applications",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tsarturi\\SimpleDTO\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thiago Sarturi",
+            "email": "tsarturi@hotmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Tsarturi\\SimpleDTO\\Providers\\SimpleDTOServiceProvider"
+          ]
+        }
+      },
+    "require": {}
+}

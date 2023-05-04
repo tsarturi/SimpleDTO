@@ -1,0 +1,38 @@
+<?php
+
+namespace {{ namespace }};
+
+use Tsarturi\SimpleDTO\DTO;
+
+class {{ class }} extends DTO
+{
+
+    protected function rules() : array
+    {
+        return [];
+    }
+
+    protected function messages(): array
+    {
+        return [];
+    }
+
+    protected function attributes(): array
+    {
+        return [];
+    }
+
+    protected function defaults(): array
+    {
+        return [
+
+        ];
+    }
+
+    protected function casts(): array
+    {
+        return [
+
+        ];
+    }
+}

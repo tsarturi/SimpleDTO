@@ -24,15 +24,11 @@ class {{ class }} extends DTO
 
     protected function defaults(): array
     {
-        return [
-
-        ];
+        return [];
     }
 
     protected function casts(): array
     {
-        return [
-
-        ];
+        return [];
     }
 }

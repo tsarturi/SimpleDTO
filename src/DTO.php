@@ -4,8 +4,10 @@ namespace Tsarturi\SimpleDTO;
 use Illuminate\Http\Request;
 use PHPUnit\Util\InvalidJsonException;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 use Tsarturi\SimpleDto\Castings\Castable;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Tsarturi\SimpleDto\Exceptions\CastTargetException;
 
@@ -13,10 +15,10 @@ abstract class DTO
 {
 
     private FormRequest|null $formRequest = null;
-    private \Illuminate\Support\Facades\Validator $validator;
+    // private \Illuminate\Contracts\Validation\Validator|\Illuminate\Validation\Validator $validator;
 
-    public array $dataOriginal = [];
-    public array $dataValidated = [];
+    private array $dataOriginal = [];
+    private array $dataValidated = [];
     public array $data = [];
 
     public array $rules = [];
@@ -38,9 +40,13 @@ abstract class DTO
         $this->dataOriginal = $data;
 
         if ($formRequestClass) {
+
             $this->processFormRequest($formRequestClass, $data);
+
         } else {
-            $this->validateDataWithSelfValidator();
+
+            $this->processDataValidation($data);
+
         }
 
         $this->prepareData();
@@ -61,8 +67,9 @@ abstract class DTO
                 throw new CastTargetException($key);
             }
 
-            $this->data[$key] = $value->cast($key, $this->data[$key]);
-
+            if (isset($this->data[$key])) {
+                $this->data[$key] = $value->cast($key, $this->data[$key]);
+            }
 
         }
 
@@ -84,16 +91,17 @@ abstract class DTO
 
     }
 
-    protected function validateDataWithSelfValidator() : void
+    protected function processDataValidation(?array $data = null) : void
     {
-        $data = $this->validator = \Illuminate\Support\Facades\Validator::make(
+
+       $dataValidated = \Illuminate\Support\Facades\Validator::make(
             $this->data,
             $this->rules(),
             $this->messages(),
             $this->attributes()
         )->validate();
 
-        $this->dataValidated = $data;
+        $this->dataValidated = $dataValidated;
         $this->rules = $this->rules();
 
     }

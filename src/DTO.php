@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Tsarturi\SimpleDto\Castings\Castable;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Auth\Access\AuthorizationException;
-use Tsarturi\SimpleDto\Castings\CastTargetException;
+use Tsarturi\SimpleDto\Exceptions\CastTargetException;
 
 abstract class DTO
 {
@@ -21,6 +21,14 @@ abstract class DTO
 
     public array $rules = [];
 
+    /**
+     * Constructor of SimpleDTO
+     *
+     * @param array|null $data
+     * @param string|null $formRequestClass
+     *
+     * @throws AuthorizationException|ValidationException|MissingCastTypeException|CastTargetException
+     */
     public function __construct(?array $data = null, ?string $formRequestClass = null)
     {
         if (is_null($data)) {

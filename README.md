@@ -3,7 +3,7 @@
         <h1>SimpleDTO</h1>
         Simple Data Transfer Objects with FormRequest Validation for Laravel applications.
     </p>
-    <p>*This library is based on https://github.com/WendellAdriel/laravel-validated-dto*</p>
+    <p>This library is based on https://github.com/WendellAdriel/laravel-validated-dto</p>
 </div>
 
 <p align="center">
@@ -55,7 +55,7 @@ You can create DTOs using the `make:simpledto` command:
 php artisan make:simpledto UserDTO
 ```
 
-Its create a UserDTO class into App\DTOs folder.
+It's create an UserDTO class into App\DTOs folder.
 
 ## Generating FormRequest
 
@@ -65,4 +65,22 @@ You can create FormRequest class using the `make:simpledtoformrequest` command:
 php artisan make:simpledtoformrequest UserStoreRequest
 ```
 
-It's create a UserStoreRequest into Form Request's folder
+It's create an UserStoreRequest into Form Request's folder
+
+## Using DTO's
+
+```php
+<?php
+
+$dto = new UserDTO( [ 'name' => 'name', 'email' => 'email@email.com']);
+
+```
+
+## Using DTO's with FormRequest
+
+```php
+<?php
+
+$dto = new UserDTO( [ 'name' => 'name', 'email' => 'email@email.com'], UserStoreRequest::class);
+
+```

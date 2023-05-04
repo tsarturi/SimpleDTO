@@ -9,6 +9,7 @@ class SimpleDTOServiceProvider extends ServiceProvider
 {
     /**
      * @return void
+     *
      */
     public function boot()
     {

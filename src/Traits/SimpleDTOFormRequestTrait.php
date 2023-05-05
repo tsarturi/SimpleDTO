@@ -21,7 +21,13 @@ trait SimpleDTOFormRequestTrait
         $instance = $validator->getValidatorInstance();
 
         if ($instance->fails()) {
-            return $instance->errors();
+
+            // return $instance->errors();
+
+            $errors = $instance->errors();
+
+            throw \Illuminate\Validation\ValidationException::withMessages( $errors->messages() );
+
         }
 
         $validator->passedValidation();

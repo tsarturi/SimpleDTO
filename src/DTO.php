@@ -80,11 +80,22 @@ abstract class DTO
 
         foreach ($defaults as $key => $value) {
 
-            if (!property_exists($this, $key) || empty($this->{$key}) ) {
+
+            if ( (!isset($this->data[$key])) || (empty($this->data[$key])) ) {
                 $this->{$key} = $value;
                 $this->data[$key] = $value;
                 $this->dataValidated[$key] = $value;
             }
+            /*
+
+            if (!property_exists($this, $key) || empty($this->{$key}) ) {
+
+                $this->{$key} = $value;
+                $this->data[$key] = $value;
+                $this->dataValidated[$key] = $value;
+
+            }
+            */
 
         }
 
@@ -186,4 +197,3 @@ abstract class DTO
     abstract protected function casts(): array;
 
 }
-
